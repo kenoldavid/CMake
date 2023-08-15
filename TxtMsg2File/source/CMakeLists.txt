@@ -11,24 +11,33 @@ project(
 		LANGUAGES CXX
 		)
 
-# This command tells CMake to create an executable from a set of 
-# source files.
-add_executable(
-	# name of the executable
-	TxtMsg2FileBinary 
+# GLOBING
+file(GLOB_RECURSE SOURCE_FILES 
+	src/*.cpp
+	)
 	
-	# instructs CMake to build the executable as a Windows GUI application.
-	#WIN32 
-	
-	# source files to build
-	src/mainwindow.h
-	src/mainwindow.cpp
-	main.cpp
-)
+add_executable(TxtMsg2FileBinary main.cpp ${SOURCE_FILES})
 
-# This cmd add expected computer features to a target.
+
+# This command tells CMake to create an executable from a set of 
+# source implementation files and main.
+# add_executable(
+	# # name of the executable
+	# TxtMsg2FileBinary 
+	
+	# # instructs CMake to build the executable as a Windows GUI application.
+	# #WIN32 
+	
+	# # source files to build
+	# src/mainwindow.cpp
+	# main.cpp
+# )
+
+# This cmd adds expected computer features to a target.
 # (i.e., use C++20 to compile this binary and make it private
 # because we don't expect anyone else to use this executable.)
 target_compile_features(TxtMsg2FileBinary PRIVATE cxx_std_20)
 
+# This cmd lets cmake know where to find the header files
+target_include_directories(TxtMsg2FileBinary PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 

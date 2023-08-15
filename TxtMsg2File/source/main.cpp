@@ -1,4 +1,4 @@
-#include <iostream>
+/* #include <iostream>
 #include <concepts>
 
 template <typename T>
@@ -11,5 +11,17 @@ T add(T a, T b)
 int main() {
 	std::cout << "Hello from C++ 20 with CMake on Windows" << std::endl;
 	std::cout << "The sum is: " << add(7,3) << std::endl;
+	return 0;
+} */
+
+#include <iostream>
+#include "dog.h"
+#include "operations.h"
+
+int main()
+{
+	Dog dog1("Flitzy");
+    //dog1.print_info();
+	
 	return 0;
 }
