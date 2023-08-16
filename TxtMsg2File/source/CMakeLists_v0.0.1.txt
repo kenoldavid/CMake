@@ -4,26 +4,21 @@ cmake_minimum_required(VERSION 3.15)
 
 # CMake sets up a number of variables and properties which control 
 # the build for teh enabled languages.
-project(TxtMsg2File
-		VERSION 0.0.2
+project(
+		TxtMsg2File
+		VERSION 0.0.1
 		DESCRIPTION "This application creates a simple Hello World! string and writes it into a file using Unicode characters"
 		LANGUAGES CXX
-)
+		)
 
-# GLOBING -- NOT RECOMMENDED
-# file(GLOB_RECURSE SOURCE_FILES 
-	# src/*.cpp
-	# )
-
-# Create executable
-add_executable(TxtMsg2FileBinary)
-
-# Target declaration - Option  1
-# A target maps to a build artifact in the project. Any target has a collection of properties.	
-#add_executable(TxtMsg2FileBinary main.cpp ${SOURCE_FILES})
+# GLOBING
+file(GLOB_RECURSE SOURCE_FILES 
+	src/*.cpp
+	)
+	
+add_executable(TxtMsg2FileBinary main.cpp ${SOURCE_FILES})
 
 
-# Target declaration - Option  2
 # This command tells CMake to create an executable from a set of 
 # source implementation files and main.
 # add_executable(
@@ -38,25 +33,11 @@ add_executable(TxtMsg2FileBinary)
 	# main.cpp
 # )
 
-# Target declaration - Option  3
-target_sources(TxtMsg2FileBinary
-	PRIVATE
-		src/mainwindow.cpp
-		src/dog.cpp
-		main.cpp
-)
-
 # This cmd adds expected computer features to a target.
 # (i.e., use C++20 to compile this binary and make it private
 # because we don't expect anyone else to use this executable.)
-target_compile_features(TxtMsg2FileBinary 
-	PRIVATE 
-		cxx_std_20
-)
+target_compile_features(TxtMsg2FileBinary PRIVATE cxx_std_20)
 
-# This cmd lets cmake know which directories will contain the header files
-target_include_directories(TxtMsg2FileBinary 
-	PRIVATE 
-		${CMAKE_CURRENT_SOURCE_DIR}/include
-)
+# This cmd lets cmake know where to find the header files
+target_include_directories(TxtMsg2FileBinary PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
