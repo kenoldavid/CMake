@@ -1,27 +1,15 @@
-/* #include <iostream>
-#include <concepts>
+#include <QtCore>
+#include <QtGui>
+#include <QtWidgets>
+#include "mainwindow.h"
 
-template <typename T>
-requires std::integral<T>
-T add(T a, T b)
+int main(int argc, char** argv)
 {
-	return a + b;
-}
+	QApplication app(argc, argv);
 
-int main() {
-	std::cout << "Hello from C++ 20 with CMake on Windows" << std::endl;
-	std::cout << "The sum is: " << add(7,3) << std::endl;
-	return 0;
-} */
+	MainWindow win;
+	win.resize(320, 240);
+	win.setVisible(true);
 
-#include <iostream>
-#include "dog.h"
-#include "operations.h"
-
-int main()
-{
-	Dog dog1("Flitzy");
-    dog1.print_info();
-	
-	return 0;
+	return app.exec();
 }
