@@ -39,8 +39,8 @@ add_executable(TxtMsg2FileBinary)
 # ------------------------------
 target_sources(TxtMsg2FileBinary
 	PRIVATE
+		include/mainwindow.h
 		src/mainwindow.cpp
-		#src/dog.cpp
 		main.cpp
 )
 
